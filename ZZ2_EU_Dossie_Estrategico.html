@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZZ2 EU — Dossiê Estratégico Comercial</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ef;
+    --gray: #54585a;
+    --gray-light: #e8e6e1;
+    --accent: #d4a843;
+    --accent-dark: #a07c28;
+    --red: #c0392b;
+    --blue: #1a3a5c;
+    --blue-light: #e8f0f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 1px solid rgba(212,168,67,0.3);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(245,243,239,0.6);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(212,168,67,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(26,58,92,0.15) 0%, transparent 50%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(245,243,239,0.65);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(212,168,67,0.2);
+    margin: 0;
+  }
+
+  /* CARDS */
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,168,67,0.15);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(245,243,239,0.4);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  /* COPY BLOCKS */
+  .copy-block {
+    background: rgba(26,58,92,0.2);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .copy-block p {
+    color: rgba(245,243,239,0.88);
+    line-height: 1.85;
+  }
+
+  .copy-block strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    background: rgba(212,168,67,0.12);
+    border: 1px solid rgba(212,168,67,0.3);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+
+  /* PRODUCT CARD */
+  .product-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .product-card:hover { border-color: rgba(212,168,67,0.3); }
+
+  .product-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-desc {
+    font-size: 0.88rem;
+    color: rgba(245,243,239,0.6);
+    line-height: 1.6;
+  }
+
+  /* META AD CARD */
+  .meta-card {
+    background: #1c1e21;
+    border: 1px solid #3a3b3c;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .meta-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .meta-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .meta-page-info { font-size: 0.8rem; }
+  .meta-page-name { font-weight: 600; color: #e4e6eb; }
+  .meta-sponsored { color: #b0b3b8; font-size: 0.72rem; }
+
+  .meta-copy {
+    font-size: 0.93rem;
+    color: #e4e6eb;
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+    white-space: pre-line;
+  }
+
+  .meta-image-placeholder {
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.15);
+    border-radius: 4px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .meta-footer {
+    border-top: 1px solid #3a3b3c;
+    padding-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .meta-cta {
+    background: var(--accent);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: default;
+  }
+
+  .meta-link-preview { font-size: 0.72rem; color: #b0b3b8; }
+
+  /* SCRIPT / ROTEIRO */
+  .script-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .script-scene {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .script-scene:last-child { border-bottom: none; }
+
+  .scene-time {
+    background: rgba(212,168,67,0.1);
+    border-right: 1px solid rgba(212,168,67,0.2);
+    padding: 1rem 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+    min-width: 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .scene-content { padding: 1rem 1.25rem; flex: 1; }
+
+  .scene-visual {
+    font-size: 0.72rem;
+    color: rgba(245,243,239,0.4);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .scene-vo {
+    font-size: 0.92rem;
+    color: var(--white);
+    line-height: 1.65;
+  }
+
+  /* LP SECTION */
+  .lp-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .lp-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+
+  .headline-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .headline-sub {
+    font-size: 1.05rem;
+    color: rgba(245,243,239,0.7);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    background: rgba(212,168,67,0.05);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(245,243,239,0.85);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; color: black; }
+    nav { display: none; }
+    .hero { min-height: auto; padding: 3rem 2rem; }
+    .card, .lp-section, .script-block, .meta-card { break-inside: avoid; }
+  }
+
+  /* SCROLL */
+  html { scroll-behavior: smooth; }
+
+  /* PILL */
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.25);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 4px 6px 4px 0;
+  }
+
+  .stat-pill span { color: rgba(245,243,239,0.6); font-weight: 400; }
+
+  /* FOOTNOTE */
+  .footnote {
+    font-size: 0.78rem;
+    color: rgba(245,243,239,0.35);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .highlight-box {
+    background: rgba(212,168,67,0.08);
+    border: 1px solid rgba(212,168,67,0.25);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+  }
+
+  .highlight-box p { color: rgba(245,243,239,0.9); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ZZ2 EU</div>
+  <ul class="nav-links">
+    <li><a href="#roteiro">Roteiro</a></li>
+    <li><a href="#lp">LP</a></li>
+    <li><a href="#awareness">Awareness</a></li>
+    <li><a href="#venda">Venda</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="position:relative; z-index:1;">
+    <span class="hero-eyebrow">Dossiê Estratégico Comercial · Europa 2025–2026</span>
+    <h1 class="hero-title">
+      ZZ2 CHEGA<br>
+      NA <span class="accent">EUROPA</span>
+    </h1>
+    <p class="hero-sub">Estratégia completa de narrativa, copy de vendas e criativos META para a expansão europeia da maior marca de tecnologia automotiva do Brasil.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <div class="stat-pill">+1.800 <span>dealers globais</span></div>
+      <div class="stat-pill">15 anos <span>de mercado</span></div>
+      <div class="stat-pill">4 <span>continentes</span></div>
+      <div class="stat-pill">58+ <span>kits CarPlay</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ========== SEÇÃO 1: ROTEIRO INSTITUCIONAL ========== -->
+<section id="roteiro">
+  <span class="section-label">Peça 01</span>
+  <h2 class="section-title">ROTEIRO INSTITUCIONAL<br>CHEGADA NA EUROPA</h2>
+  <p style="color:rgba(245,243,239,0.6); margin-bottom:2.5rem; max-width:640px;">Roteiro-mestre para vídeo institucional de 90–120 segundos. Serve como espinha dorsal narrativa para todos os outros canais — redes sociais, LP, apresentações B2B e materiais de imprensa.</p>
+
+  <div class="card" style="margin-bottom:2rem;">
+    <span class="card-label">Briefing técnico</span>
+    <div style="display:flex; gap:2rem; flex-wrap:wrap;">
+      <div><div style="font-size:0.72rem; color:rgba(245,243,239,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Duração</div><div style="font-weight:500;">90 – 120s</div></div>
+      <div><div style="font-size:0.72rem; color:rgba(245,243,239,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Tom</div><div style="font-weight:500;">Autoridade + Emoção</div></div>
+      <div><div style="font-size:0.72rem; color:rgba(245,243,239,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Música</div><div style="font-weight:500;">Orquestral + Eletrônico</div></div>
+      <div><div style="font-size:0.72rem; color:rgba(245,243,239,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Formato</div><div style="font-weight:500;">16:9 / Adaptável 9:16</div></div>
+      <div><div style="font-size:0.72rem; color:rgba(245,243,239,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Idioma V.O.</div><div style="font-weight:500;">Inglês / Portu. (PT)</div></div>
+    </div>
+  </div>
+
+  <div class="script-block">
+
+    <div class="script-scene">
+      <div class="scene-time">0:00<br>–<br>0:12</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Cenas aéreas de Lisboa ao amanhecer. Tejo refletindo luz dourada. Câmera desce para ruas da cidade onde carros modernos se movem. ]</div>
+        <div class="scene-vo"><strong>V.O.:</strong><br>
+        "There is a continent that has always demanded the best from its machines.<br>
+        Precision. Performance. Connection."</div>
+      </div>
+    </div>
+
+    <div class="script-scene">
+      <div class="scene-time">0:12<br>–<br>0:28</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Arquivo histórico — garagem no Brasil, 2019. Engenheiros jovens. Bancadas com placas e fios. Primeiros protótipos. Corte rápido para telas de carro se ligando. ]</div>
+        <div class="scene-vo"><strong>V.O.:</strong><br>
+        "In 2019, in Brazil, a group of engineers asked a simple question:<br>
+        Why should modern drivers settle for yesterday's technology?<br>
+        That question built ZZ2."</div>
+      </div>
+    </div>
+
+    <div class="script-scene">
+      <div class="scene-time">0:28<br>–<br>0:45</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Mapa-múndi animado. Ponto no Brasil. Linhas se expandindo: EUA → China → Europa. Logo ZZ2 aparecer sobre Lisboa. Numbers counter: "1,800+ dealers." ]</div>
+        <div class="scene-vo"><strong>V.O.:</strong><br>
+        "From Brazil to the United States. From the US to Asia.<br>
+        Now — the road leads here.<br>
+        Over 1,800 dealer partners. Across four continents.<br>
+        ZZ2 is the market leader in automotive connectivity. And now — Europe."</div>
+      </div>
+    </div>
+
+    <div class="script-scene">
+      <div class="scene-time">0:45<br>–<br>1:05</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Cortes rápidos dos produtos em ação — ZZPLAY numa BMW, DIZZPLAY numa Mercedes, ZZCAM numa Land Rover, Bike2Play numa moto em curva. Efeitos de interface CarPlay/Android Auto. Animação clean e futurista. ]</div>
+        <div class="scene-vo"><strong>V.O.:</strong><br>
+        "Wireless CarPlay. Android Auto. Camera integration. Screen replacements. Streaming — without limits.<br>
+        Compatible with the vehicles Europeans drive every day.<br>
+        BMW. Mercedes. Porsche. Audi. Volkswagen. Volvo.<br>
+        ZZ2 turns any car into a connected car."</div>
+      </div>
+    </div>
+
+    <div class="script-scene">
+      <div class="scene-time">1:05<br>–<br>1:18</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Dealer em sua loja. Técnico instalando kit ZZ2. Cliente vendo o resultado na tela. Aperto de mão. Sorriso. ]</div>
+        <div class="scene-vo"><strong>V.O.:</strong><br>
+        "And for every installer, every dealer, every workshop that joins us —<br>
+        ZZ2 is not just a supplier.<br>
+        We are the partner that makes your business grow."</div>
+      </div>
+    </div>
+
+    <div class="script-scene">
+      <div class="scene-time">1:18<br>–<br>1:30</div>
+      <div class="scene-content">
+        <div class="scene-visual">[ VISUAL: Logo ZZ2 em fundo escuro. Tagline aparece. Endereço web. Cidade de Lisboa ao fundo, desfocada, luzes douradas. Fade out. ]</div>
+        <div class="scene-vo"><strong>V.O. FINAL:</strong><br>
+        "Automotive technology. Properly integrated.<br><br>
+        <em>ZZ2 — Stay Wired In.</em>"</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="highlight-box">
+    <p><strong style="color:var(--accent);">Como desdobrar este roteiro:</strong> Cada cena do roteiro equivale a uma peça de conteúdo autônoma. A cena 2 (origem no Brasil) → story de branding. A cena 3 (expansão global) → post institucional. A cena 4 (produtos) → Reels de produto. A cena 5 (dealer) → recrutamento B2B. Use as locuções como caption base para cada formato.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ========== SEÇÃO 2: LANDING PAGE ========== -->
+<section id="lp">
+  <span class="section-label">Peça 02</span>
+  <h2 class="section-title">COPY COMPLETA<br>LANDING PAGE (LP)</h2>
+  <p style="color:rgba(245,243,239,0.6); margin-bottom:2.5rem; max-width:640px;">Estrutura completa da LP de vendas / captação de dealers. Copy pronta para implementação, organizada por bloco de página.</p>
+
+  <!-- HERO LP -->
+  <div class="lp-section">
+    <div class="lp-section-title">Bloco 01 · Hero / Above the Fold</div>
+    <div class="tag">Headline Principal</div>
+    <div class="headline-display">THE CONNECTED CAR REVOLUTION<br>IS NOW IN EUROPE.</div>
+    <div class="headline-sub">ZZ2 brings wireless CarPlay, Android Auto, and smart automotive technology — seamlessly integrated into the cars your customers already own.</div>
+    <div class="copy-block">
+      <p><strong>[CTA primário]</strong> Become a ZZ2 Dealer →<br>
+      <strong>[CTA secundário]</strong> Discover our products ↓</p>
+    </div>
+    <div class="tag" style="margin-top:1.5rem;">Subheadline / Credenciais</div>
+    <p style="color:rgba(245,243,239,0.7); font-size:0.9rem; margin-bottom:0.5rem;">Três selos horizontais abaixo do CTA:</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.75rem;">
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 18px; font-size:0.82rem; color:rgba(245,243,239,0.7);">✓ 15 years of engineering</div>
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 18px; font-size:0.82rem; color:rgba(245,243,239,0.7);">✓ 1,800+ global partners</div>
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 18px; font-size:0.82rem; color:rgba(245,243,239,0.7);">✓ 4 continents covered</div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="lp-section">
+    <div class="lp-section-title">Bloco 02 · História da Empresa</div>
+    <div class="tag">Headline do bloco</div>
+    <div class="headline-display" style="font-size:2rem;">FROM BRAZIL WITH PRECISION.</div>
+    <div class="copy-block">
+      <p>ZZ2 was born in 2019 out of a simple frustration: modern drivers deserved better technology than what factory systems offered — but upgrading a car's infotainment felt like a compromise. Either you lost original features, or you ended up with an aftermarket solution that never quite fit.</p>
+    </div>
+    <div class="copy-block">
+      <p>Our founders — engineers with a passion for automotive technology — built ZZ2 to change that. Every product we create is designed to integrate <strong>seamlessly</strong> into the vehicle's existing system, preserving the original look and feel while adding the connectivity modern drivers expect.</p>
+    </div>
+    <div class="copy-block">
+      <p>From a garage in Brazil to a global operation. From our first CarPlay kit to over 58 interfaces compatible with the world's leading brands. From 2 engineers to an international team serving over 1,800 dealer partners across the Americas, Asia, and now — <strong>Europe</strong>.</p>
+    </div>
+    <div class="highlight-box" style="margin-top:1.5rem;">
+      <p style="font-family:'Bebas Neue', sans-serif; font-size:1.6rem; letter-spacing:2px; color:var(--accent); line-height:1.1;">"Innovation drives us. Connectivity defines us. ZZ2 leads the way."</p>
+      <p style="font-size:0.82rem; color:rgba(245,243,239,0.5); margin-top:0.5rem;">— Vinicius Frezza, CEO ZZ2</p>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <div class="tag">Timeline visual · labels</div>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+        <div style="border:1px solid rgba(212,168,67,0.25); border-radius:4px; padding:8px 14px; font-size:0.8rem;"><span style="color:var(--accent); font-weight:700;">2019</span> · Founded in Brazil</div>
+        <div style="border:1px solid rgba(212,168,67,0.25); border-radius:4px; padding:8px 14px; font-size:0.8rem;"><span style="color:var(--accent); font-weight:700;">2020</span> · First CarPlay kit</div>
+        <div style="border:1px solid rgba(212,168,67,0.25); border-radius:4px; padding:8px 14px; font-size:0.8rem;"><span style="color:var(--accent); font-weight:700;">2022</span> · 2,500+ dealer partners</div>
+        <div style="border:1px solid rgba(212,168,67,0.25); border-radius:4px; padding:8px 14px; font-size:0.8rem;"><span style="color:var(--accent); font-weight:700;">2024</span> · Global leader · US & Asia</div>
+        <div style="border:1px solid rgba(212,168,67,0.25); border-radius:4px; padding:8px 14px; font-size:0.8rem;"><span style="color:var(--accent); font-weight:700;">2025</span> · Europe launched</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUTOS LP -->
+  <div class="lp-section" id="produtos">
+    <div class="lp-section-title">Bloco 03 · Produtos</div>
+    <div class="tag">Headline do bloco</div>
+    <div class="headline-display" style="font-size:2rem;">ONE ECOSYSTEM.<br>EVERY VEHICLE.</div>
+    <p style="color:rgba(245,243,239,0.65); margin-bottom:2rem; line-height:1.7;">ZZ2's product lines are engineered to cover every need — from wireless CarPlay activation to full-screen replacement. Each solution is built to integrate perfectly, install quickly, and perform flawlessly.</p>
+
+    <div class="grid-3" style="margin-bottom:1.5rem;">
+      <div class="product-card">
+        <div class="product-name">ZZPLAY</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">CarPlay & Android Auto Kits</div>
+        <div class="product-desc">Add wireless CarPlay and Android Auto to vehicles that don't have it — or replace wired with wireless. Plug-and-play integration that preserves all original vehicle functions. 58+ kits compatible with BMW, Mercedes, Audi, Porsche, Volkswagen and more.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">ZZCAM</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">Camera Interface</div>
+        <div class="product-desc">Integrate front, rear, or 360° cameras directly into the factory screen — no extra monitors, no messy installations. The driver sees what matters, where it matters: on the original display.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">DIZZPLAY</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">Screen Replacements</div>
+        <div class="product-desc">110+ screen replacement solutions for vehicles where upgrading the original display is the right move. OEM-fit precision, modern display quality, zero compromise on interior aesthetics.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">ZZAIR</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">Wireless Entertainment</div>
+        <div class="product-desc">Turn wired CarPlay into wireless. Stream Netflix, YouTube and live content directly to the car's screen with ZZAIR PRO 2, DUO 2, and ZEUS ULTRA 2. No cables. No limits.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">BIKE2PLAY</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">CarPlay for Motorcycles</div>
+        <div class="product-desc">The first CarPlay and Android Auto solution designed for motorcycles — with optional DVR. Europe's motorcycle culture finally gets the connected ride experience it deserves.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">MPPLAY</div>
+        <div style="font-size:0.72rem; color:rgba(212,168,67,0.7); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.75rem;">Single-Din Touchscreen</div>
+        <div class="product-desc">A modern, touchscreen single-DIN radio solution for older or commercial vehicles — bringing smart connectivity to any dashboard, without any compromise.</div>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <p><strong>Compatible with the brands Europeans know and trust:</strong><br>
+      BMW · Mercedes-Benz · Audi · Volkswagen · Porsche · Volvo · Land Rover · Jaguar · Alfa Romeo · Lexus · Toyota · Ford · Nissan · MINI · Ferrari · Lamborghini · McLaren · Aston Martin · Peugeot · Citroën · Fiat</p>
+    </div>
+  </div>
+
+  <!-- FEEDBACK -->
+  <div class="lp-section">
+    <div class="lp-section-title">Bloco 04 · Feedback / Social Proof</div>
+    <div class="tag">Headline do bloco</div>
+    <div class="headline-display" style="font-size:2rem;">DEALERS TALK.<br>RESULTS SPEAK.</div>
+
+    <div class="testimonial">
+      <div class="testimonial-text">"Installing the ZZPLAY kit takes under 30 minutes and the result blows the customer away every single time. ZZ2 has become our best-selling aftermarket solution — and the support from the team is second to none."</div>
+      <div class="testimonial-author">— Marco T. · Automotive Workshop Owner · Portugal</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial-text">"We've tried other suppliers before, but ZZ2 is the only brand where every single kit works exactly as described — first time, every time. Our return rate is essentially zero. Our customers come back for more."</div>
+      <div class="testimonial-author">— Carlos M. · Car Electronics Dealer · Spain</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial-text">"The DIZZPLAY for the BMW E9X was exactly what we needed. OEM-quality fit, stunning display, and our customer didn't want to believe it wasn't factory. That's the ZZ2 standard."</div>
+      <div class="testimonial-author">— André F. · BMW Specialist Workshop · Netherlands</div>
+    </div>
+
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem;">
+      <div style="text-align:center; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue', sans-serif; font-size:2.8rem; color:var(--accent); line-height:1;">1,800+</div>
+        <div style="font-size:0.78rem; color:rgba(245,243,239,0.5); letter-spacing:1px;">Dealer partners</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue', sans-serif; font-size:2.8rem; color:var(--accent); line-height:1;">4</div>
+        <div style="font-size:0.78rem; color:rgba(245,243,239,0.5); letter-spacing:1px;">Continents</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue', sans-serif; font-size:2.8rem; color:var(--accent); line-height:1;">58+</div>
+        <div style="font-size:0.78rem; color:rgba(245,243,239,0.5); letter-spacing:1px;">CarPlay kits</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue', sans-serif; font-size:2.8rem; color:var(--accent); line-height:1;">15</div>
+        <div style="font-size:0.78rem; color:rgba(245,243,239,0.5); letter-spacing:1px;">Years of R&D</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="lp-section">
+    <div class="lp-section-title">Bloco 05 · Formulário / CTA Final</div>
+    <div class="tag">Headline do formulário</div>
+    <div class="headline-display" style="font-size:2rem;">BECOME A ZZ2<br>DEALER IN EUROPE.</div>
+    <div class="headline-sub">Join the network that's redefining automotive connectivity. Fill out the form below and our European team will contact you within 24 hours.</div>
+
+    <div class="copy-block" style="margin-bottom:1.5rem;">
+      <p><strong>O que você vai receber ao se cadastrar:</strong><br>
+      → Catálogo completo de produtos para o mercado europeu<br>
+      → Suporte técnico dedicado de engenheiros ZZ2<br>
+      → Acesso a materiais de treinamento e instalação<br>
+      → Condições exclusivas para dealers parceiros<br>
+      → Prioridade no lançamento de novos produtos</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:2rem;">
+      <div style="font-size:0.78rem; color:rgba(245,243,239,0.4); letter-spacing:3px; text-transform:uppercase; margin-bottom:1.5rem;">Campos do formulário</div>
+      <div class="grid-2" style="gap:1rem; margin-bottom:1rem;">
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">First Name *</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">Last Name *</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">Business Email *</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">Phone / WhatsApp *</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">Company / Workshop Name *</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4);">Country *</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:10px 14px; font-size:0.85rem; color:rgba(245,243,239,0.4); margin-bottom:1rem;">What products are you most interested in? (multi-select)</div>
+      <div style="background:var(--accent); color:var(--black); text-align:center; padding:14px; border-radius:4px; font-weight:700; letter-spacing:2px; font-size:0.9rem;">BECOME A ZZ2 DEALER →</div>
+      <div style="font-size:0.72rem; color:rgba(245,243,239,0.3); text-align:center; margin-top:0.75rem;">By submitting this form, you agree to our Privacy Policy. We respect your data.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ========== SEÇÃO 3: META AWARENESS ========== -->
+<section id="awareness">
+  <span class="section-label">Peça 03</span>
+  <h2 class="section-title">CRIATIVOS META<br>AWARENESS</h2>
+  <p style="color:rgba(245,243,239,0.6); margin-bottom:2.5rem; max-width:640px;">Três conjuntos de copy para anúncios de topo de funil no Facebook e Instagram — objetivo: alcance, reconhecimento de marca e captação de leads B2B (lojistas/dealers).</p>
+
+  <!-- AD 1: SEJA UM LOJISTA PARCEIRO -->
+  <div class="card">
+    <div class="card-label">Criativo A · Seja um Lojista Parceiro</div>
+    <div class="card-title">AD 01 — DEALER RECRUITMENT</div>
+    <p style="color:rgba(245,243,239,0.6); font-size:0.85rem; margin-bottom:1.5rem;">Objetivo: captação de dealers / instaladores. Público: lojistas de acessórios automotivos, workshops de eletrônica automotiva, instaladores independentes.</p>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored · 🌍 Europe</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">🔧 Are you an automotive installer or dealer looking for the next big opportunity?
+
+ZZ2 — the market leader in automotive connectivity — is now building its European dealer network.
+
+We're looking for partners who want to:
+✅ Offer in-demand CarPlay & Android Auto upgrades
+✅ Access 58+ kits for the most popular European vehicles
+✅ Get full technical support from our engineering team
+✅ Grow their business with a proven global brand
+
+👉 Tap below to learn how to become a ZZ2 dealer in Europe.</div>
+
+      <div class="meta-image-placeholder">[ IMAGEM: Técnico instalando kit ZZ2 em BMW — antes/depois da tela ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · Become a Dealer</div>
+        </div>
+        <button class="meta-cta">Apply Now</button>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem;">
+      <div class="tag">Variação B · Mais direta</div>
+      <div class="meta-card" style="margin-top:0.75rem;">
+        <div class="meta-header">
+          <div class="meta-avatar">ZZ</div>
+          <div class="meta-page-info">
+            <div class="meta-page-name">ZZ2 Europe</div>
+            <div class="meta-sponsored">Sponsored</div>
+          </div>
+        </div>
+        <div class="meta-copy">Your workshop could be selling the most wanted automotive upgrade in Europe right now.
+
+ZZ2 CarPlay & Android Auto kits: plug-and-play, 30-minute install, premium result — and customers who come back for more.
+
+We're choosing our European dealer partners now. 🇪🇺
+
+Tap to apply → limited spots available.</div>
+        <div class="meta-image-placeholder">[ VÍDEO: Reel 15s — mão plugando kit, tela acendendo, CarPlay aparecendo ]</div>
+        <div class="meta-footer">
+          <div class="meta-link-preview">ZZ-2.EU</div>
+          <button class="meta-cta">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD 2: LÍDER DE MERCADO -->
+  <div class="card">
+    <div class="card-label">Criativo B · ZZ2 é Líder de Mercado</div>
+    <div class="card-title">AD 02 — BRAND AUTHORITY</div>
+    <p style="color:rgba(245,243,239,0.6); font-size:0.85rem; margin-bottom:1.5rem;">Objetivo: construção de autoridade e reconhecimento de marca. Público amplo: proprietários de veículos premium, entusiastas, profissionais do setor automotivo.</p>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">The world's leading automotive connectivity brand just arrived in Europe. 🌍
+
+ZZ2 has been transforming how people experience their cars since 2019 — starting in Brazil, expanding through the Americas and Asia, and now bringing the same technology to European roads.
+
+1,800+ dealer partners. 4 continents. 58+ CarPlay integration kits.
+And compatibility with every major brand you already know.
+
+This is what proper automotive technology looks like.
+
+→ Discover ZZ2</div>
+
+      <div class="meta-image-placeholder">[ IMAGEM: Mapa com pontos globais + close de tela CarPlay em carro de luxo europeu ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · Automotive Technology, Properly Integrated</div>
+        </div>
+        <button class="meta-cta">Discover ZZ2</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD 3: ZZ2 CHEGA NA EUROPA -->
+  <div class="card">
+    <div class="card-label">Criativo C · ZZ2 Chega na Europa</div>
+    <div class="card-title">AD 03 — LAUNCH ANNOUNCEMENT</div>
+    <p style="color:rgba(245,243,239,0.6); font-size:0.85rem; margin-bottom:1.5rem;">Objetivo: anúncio de chegada. Tom: urgência e novidade. Público: dealers, lojistas e early adopters. Ideal para campanha de lançamento nas primeiras 4–8 semanas.</p>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored · 🚀 New in Europe</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">🇧🇷 → 🇺🇸 → 🇨🇳 → 🇪🇺
+
+The journey that started in Brazil now reaches Europe.
+
+ZZ2 is the automotive technology brand that changed how millions of drivers in the Americas and Asia experience their cars — and we're just getting started on this continent.
+
+Wireless CarPlay. Android Auto. Camera integration. Streaming. Screen replacements.
+
+For BMW. Mercedes. Porsche. Volkswagen. Volvo. And 15+ more brands.
+
+Europe's cars deserve the best. Now they can have it.
+
+📍 ZZ2 Europe — Based in Lisbon. Built for the continent.
+
+→ See what we do</div>
+
+      <div class="meta-image-placeholder">[ VÍDEO: Teaser institucional 30s — imagens de cidades europeias + produto + logo ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · Stay Wired In</div>
+        </div>
+        <button class="meta-cta">See Products</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ========== SEÇÃO 4: META CONVERSÃO ========== -->
+<section id="venda">
+  <span class="section-label">Peça 04</span>
+  <h2 class="section-title">CRIATIVOS META<br>CONVERSÃO / VENDA</h2>
+  <p style="color:rgba(245,243,239,0.6); margin-bottom:2.5rem; max-width:640px;">Copy de fundo de funil para anúncios com objetivo de tráfego, leads e conversão. Tom mais direto, produto no centro.</p>
+
+  <!-- AD PRODUTOS -->
+  <div class="card">
+    <div class="card-label">Criativo D · Conheça os Produtos</div>
+    <div class="card-title">AD 04 — PRODUCT SHOWCASE</div>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">Your BMW doesn't have CarPlay. It does now. 🚗
+
+ZZPLAY is the plug-and-play CarPlay & Android Auto integration kit that connects in minutes — and works exactly like it came from the factory.
+
+No modifications. No loss of original features. No compromise.
+
+Available for 58+ vehicle models including BMW, Mercedes-Benz, Porsche, Audi, Volkswagen, Volvo, and more.
+
+See if your vehicle is compatible →</div>
+
+      <div class="meta-image-placeholder">[ CARROSSEL: Before/After · Tela sem CarPlay → ZZPLAY instalado · Interface BMW, Mercedes, Porsche ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · ZZPLAY Kits</div>
+        </div>
+        <button class="meta-cta">Shop Now</button>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem;">
+      <div class="tag">Variação ZZCAM</div>
+      <div class="meta-card" style="margin-top:0.75rem;">
+        <div class="meta-header">
+          <div class="meta-avatar">ZZ</div>
+          <div class="meta-page-info">
+            <div class="meta-page-name">ZZ2 Europe</div>
+            <div class="meta-sponsored">Sponsored</div>
+          </div>
+        </div>
+        <div class="meta-copy">See what's behind you — on the screen you already have. 📷
+
+ZZCAM integrates rear and front cameras directly into your car's factory display. No extra monitors. No awkward installations. Just a clean, seamless upgrade that makes every parking situation easier and every journey safer.
+
+Compatible with the leading European vehicle brands.
+
+→ Discover ZZCAM</div>
+        <div class="meta-image-placeholder">[ VÍDEO: Câmera de ré aparecendo na tela original do carro ]</div>
+        <div class="meta-footer">
+          <div class="meta-link-preview">ZZ-2.EU · ZZCAM</div>
+          <button class="meta-cta">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD PRINCIPAIS USOS -->
+  <div class="card">
+    <div class="card-label">Criativo E · Principais Usos</div>
+    <div class="card-title">AD 05 — USE CASES</div>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">3 reasons ZZ2 is the upgrade every car needs 👇
+
+1️⃣ NAVIGATION YOU ACTUALLY TRUST
+Use Google Maps or Waze on your car's screen — always updated, always connected.
+
+2️⃣ YOUR PHONE. YOUR CAR. ONE EXPERIENCE.
+Take calls, reply to messages, and play any music service — all without touching your phone.
+
+3️⃣ SAFETY WHERE IT MATTERS
+Integrated camera systems that show exactly what factory sensors miss — on your original display.
+
+ZZ2 makes your car smarter — without changing what makes it yours.
+
+→ Explore the full range</div>
+
+      <div class="meta-image-placeholder">[ CARROSSEL 3 cards: Navegação / Conectividade / Câmera — visual limpo, fundo escuro ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · Smart Automotive Technology</div>
+        </div>
+        <button class="meta-cta">Explore</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD VANTAGENS DE MERCADO -->
+  <div class="card">
+    <div class="card-label">Criativo F · Vantagens do Mercado</div>
+    <div class="card-title">AD 06 — MARKET ADVANTAGE (B2B)</div>
+    <p style="color:rgba(245,243,239,0.6); font-size:0.85rem; margin-bottom:1.5rem;">Ângulo de mercado para dealers — sem menção a preço. Foco em oportunidade, demanda e diferencial técnico.</p>
+
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-avatar">ZZ</div>
+        <div class="meta-page-info">
+          <div class="meta-page-name">ZZ2 Europe</div>
+          <div class="meta-sponsored">Sponsored · B2B</div>
+        </div>
+      </div>
+
+      <div class="meta-copy">The European aftermarket is worth billions. And most workshops aren't offering the upgrade customers want most. 📈
+
+CarPlay and Android Auto activation has become the #1 aftermarket request for vehicles 3–10 years old across Europe.
+
+ZZ2 gives your workshop the exact solution:
+
+⚡ Installs in under 30 minutes
+🔌 Plug-and-play — no vehicle modification
+🛡️ Preserves 100% of OEM functionality
+🔧 Full technical support from our engineering team
+📦 Dedicated stock available in Europe
+
+The demand is already there. The question is: who's going to capture it?
+
+→ Become a ZZ2 dealer partner</div>
+
+      <div class="meta-image-placeholder">[ IMAGEM: Split screen — oficina tradicional vs oficina com monitor ZZ2 instalado e cliente satisfeito ]</div>
+
+      <div class="meta-footer">
+        <div>
+          <div class="meta-link-preview">ZZ-2.EU · Become a Dealer</div>
+        </div>
+        <button class="meta-cta">Partner With Us</button>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <div class="tag">Variação — Tom de autoridade</div>
+      <div class="meta-card" style="margin-top:0.75rem;">
+        <div class="meta-header">
+          <div class="meta-avatar">ZZ</div>
+          <div class="meta-page-info">
+            <div class="meta-page-name">ZZ2 Europe</div>
+            <div class="meta-sponsored">Sponsored</div>
+          </div>
+        </div>
+        <div class="meta-copy">Why do 1,800+ dealers worldwide choose ZZ2?
+
+It's not just the products — it's the partnership.
+
+When you work with ZZ2, you get:
+→ Products that work. Every time. First time.
+→ Engineering support that solves problems fast
+→ A global brand your customers can trust
+→ A growing ecosystem that keeps expanding
+
+We've built our reputation on one thing: making our dealers succeed.
+
+That's why ZZ2 is the market leader. And that's why Europe is next.
+
+→ Join the network</div>
+        <div class="meta-image-placeholder">[ IMAGEM: Collage de dealers em diferentes países — global brand feel ]</div>
+        <div class="meta-footer">
+          <div class="meta-link-preview">ZZ-2.EU</div>
+          <button class="meta-cta">Join Network</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RODAPÉ ESTRATÉGICO -->
+<section style="padding:4rem 2rem;">
+  <span class="section-label">Notas Estratégicas</span>
+  <h2 class="section-title" style="font-size:2.5rem;">GUIA DE USO<br>DESTE DOSSIÊ</h2>
+
+  <div class="grid-2" style="gap:1.5rem;">
+    <div class="card">
+      <div class="card-title" style="font-size:1.2rem; margin-bottom:0.5rem;">FUNIL DE CONTEÚDO</div>
+      <div class="product-desc" style="color:rgba(245,243,239,0.7);">
+        <strong style="color:var(--accent);">Topo:</strong> Roteiro institucional + Ads Awareness (B, C)<br>
+        <strong style="color:var(--accent);">Meio:</strong> LP completa + Ad A (Dealer) + Ad D/E<br>
+        <strong style="color:var(--accent);">Fundo:</strong> Formulário LP + Ad F (Market Advantage)<br><br>
+        Lançar os Awareness ads 2 semanas antes de abrir o formulário de dealers para aquecer o mercado.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:1.2rem; margin-bottom:0.5rem;">ADAPTAÇÕES LOCAIS</div>
+      <div class="product-desc" style="color:rgba(245,243,239,0.7);">
+        Para Portugal: manter inglês como língua primária, mas incluir versão PT nas legendas.<br>
+        Para Espanha/França: traduzir copy dos META ads para idioma local.<br>
+        Para UK: adaptar referências de marca (Land Rover, Jaguar, Aston Martin) ao topo da comunicação.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:1.2rem; margin-bottom:0.5rem;">TOM DE VOZ ZZ2 EU</div>
+      <div class="product-desc" style="color:rgba(245,243,239,0.7);">
+        Confiante mas não arrogante. Técnico mas acessível. Inovador mas com raízes sólidas. Nunca fala de preço no awareness. Sempre fala de parceria antes de produto no contexto B2B.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:1.2rem; margin-bottom:0.5rem;">KPIs SUGERIDOS</div>
+      <div class="product-desc" style="color:rgba(245,243,239,0.7);">
+        Awareness: CPM, Reach, Video View Rate<br>
+        Consideração: CTR, Link Clicks, Time on LP<br>
+        Conversão: CPL (Cost per Lead Dealer), Form Fills, Dealer Applications<br><br>
+        Meta inicial: 50 dealer applications nas primeiras 8 semanas na Europa.
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:4rem; padding-top:3rem; border-top:1px solid rgba(212,168,67,0.2);">
+    <div style="font-family:'Bebas Neue', sans-serif; font-size:1.2rem; letter-spacing:6px; color:rgba(245,243,239,0.2); margin-bottom:0.5rem;">ZZ2 EUROPE — COMMERCIAL DOSSIER</div>
+    <div style="font-family:'DM Mono', monospace; font-size:0.68rem; color:rgba(245,243,239,0.2); letter-spacing:3px;">AUTOMOTIVE TECHNOLOGY, PROPERLY INTEGRATED.</div>
+  </div>
+</section>
+
+</body>
+</html>
